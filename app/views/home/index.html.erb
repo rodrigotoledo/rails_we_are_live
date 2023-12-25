@@ -1,0 +1,9 @@
+<div class='w-full'>
+  <h1 class="font-bold text-4xl">Vai rolar!</h1>
+  <%=text_field_tag :text, '', placeholder: 'seu texto aqui', data: {reflex: 'keyup->Home#make_live'}, class: 'p-2 h-10 border border-2 rounded-md'%>
+  <%=button_tag 'Gera ai pow!', data: {reflex: 'click->Home#make_live'}, class: 'bolder p-2 h-10 border border-2 rounded-md' %>
+  <%=turbo_stream_from 'live' %>
+  <%=turbo_frame_tag 'receiving_live' do %>
+    <%=render partial: 'home/content', locals: {content:''}%>
+  <%end%>
+</div>
